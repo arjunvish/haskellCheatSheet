@@ -46,3 +46,26 @@ firstName = (Person f _) = f
 lastName :: Person -> String
 lastName = (Person _ l) = l
 ```
+
+### `sequence`, `forM` and `mapM`
+- `sequence :: [IO a] -> IO [a]`
+   takes a list of I/O actions and returns an I/O action that will perform those actions one after the other.
+- `mapM` takes a function and a list, maps the function over the list and then sequences it.
+- `mapM_` takes a function and a list, and maps the function over the list.
+- `forM` takes a list and a function, maps the function over the list and then sequences it.
+- `forM_` takes a list and a function, and maps the function over the list.
+`mapM print [1,2,3]` and `forM [1,2,3] print` return
+```
+1
+2
+3
+[(),(),()]
+```
+`mapM_ print [1,2,3]` and `forM_ [1,2,3] print` return
+```
+1
+2
+3
+```
+
+
